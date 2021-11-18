@@ -71,14 +71,30 @@ function App() {
     flexWrap: "wrap",
   };
    
-   console.log({ ...products, qty:(products.qty) }) // seguirle 
-   
+   console.log({ ...products, qty:(products.qty) }) 
 
-    
-    
+   let totalqty = 0;
+
+   products.forEach( function(record) {
+    //total += record.properties.census2010_Pop2010;
+    let { qty } = record
+    //console.log(qty)
+    totalqty = totalqty + qty
+});
+
+console.log(totalqty) // de Adolf 
+
+const CleanAll = () => {
+  const newProducts = products.map((product) => {
+   return { ...product, qty: product.qty=0 };
+  });
+  setProducts(newProducts);
+};
+
   return (
     <div className="App">
-      <ShoppingCar /* qtyTotal={reduceQtYTotal}  *//>
+      <ShoppingCar   totalqty={totalqty} />
+      <button onClick={CleanAll}>🗑</button>
       <div style={catalogStyle}>
         {products.map(({ id, title, qty, like }) => {
           return (

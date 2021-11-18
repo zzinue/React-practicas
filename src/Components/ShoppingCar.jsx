@@ -1,13 +1,15 @@
 import React from "react";
 
-const ShoppingCar = ({ qtyTotal = 0, onEmptyCar = () => {} }) => {
+const ShoppingCar = ({ totalqty = 0, onEmptyCar = () => {} }) => {
   const carStyle = { fonstSize: "2em" };
   return (
     <div onEmptyCar={onEmptyCar} style={carStyle}>
       🛒
-      {qtyTotal}
+      {totalqty}
     </div>
   );
 };
+
+
 
 export default ShoppingCar;
